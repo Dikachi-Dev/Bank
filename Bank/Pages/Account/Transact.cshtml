@@ -1,0 +1,191 @@
+﻿@page
+@model Bank.Pages.Account.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<!-- Start breadcrumbs area -->
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Send Money</h3>
+                    </div>
+                    <ul>
+                        <li class="home-bread">Dashboard</li>
+                        <li>Send Money</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+<div class="dsahboard-area bg-color area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard-head">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-profile">
+                                    <div class="profile-content">
+                                        <img src="~/img/about/profile.png" alt="">
+                                        <span class="pro-name">
+                                            @Html.DisplayFor(model => model.MyUser.FirstName)  @Html.DisplayFor(model => model.MyUser.LastName)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        <i class="flaticon-028-money"></i>
+                                        <span class="pro-name">Account Status:  @Html.DisplayFor(model => model.Profile.Status)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                       
+                                        <i class="flaticon-043-bank-2"></i>
+                                        <span class="pro-name">Account number :  @Html.DisplayFor(model => model.Profile.AccountNo)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        
+                                        <i class="flaticon-050-credit-card-2"></i>
+                                        <span class="pro-name">Balance:  @Html.DisplayFor(model => model.Profile.Balance)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <aside class="sidebar">
+                    <div class="dashboard-side">
+                        <ul>
+                            <li class="active"><a asp-area="" asp-page="/Account/Dashboard"><i class="ti-dashboard"></i>Dashboard</a></li>
+                            <li><a asp-area="" asp-page="/Account/Transact"><i class="ti-new-window"></i>Send Money</a></li>
+                            <li><a asp-area="" asp-page="/Account/MyProfile"><i class="ti-credit-card"></i>Profile</a></li>
+                            <li><a asp-area="" asp-page="/Account/Card"><i class="ti-credit-card"></i>Card Number</a></li>
+                            <li><a asp-area="" asp-page="/Account/Transactions-Log"><i class="ti-layout-list-thumb"></i>Transaction Log</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="dashboard-support">
+                        <div class="support-inner">
+                            <div class="help-support">
+                                <i class="flaticon-107-speech-bubbles"></i>
+                                <a asp-page="/Contact"><span class="help-text">Need Help?</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="send-money-form">
+                                <div class="form-text">
+                                    <h4 class="form-top">Send Money</h4>
+                                    <div class="form-inner">
+                                        <form method="post">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="m-send" asp-for="Transfer.Amount">Type Amount</label>
+                                                    <input type="text" value="0" id="m-send" asp-for="Transfer.Amount">
+                                                    <span asp-validation-for="Transfer.Amount" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label asp-for="Transfer.Bank" class="control-label"></label>
+                                                    <input type="text" asp-for="Transfer.Bank" class="form-control" />
+                                                    <span asp-validation-for="Transfer.Bank" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                    @*<label asp-for="Transfer.AccountNo" class="control-label"></label>*@
+                                                    <input asp-for="Transfer.AccountNo" class="form-control" placeholder="Receiver Id Number / Email" />
+                                                    <span asp-validation-for="Transfer.AccountNo" class="text-danger"></span>
+                                                    
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <button type="submit" value="Create">Send</button>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <label asp-for="Transfer.Description">Recipient Copy</label>
+                                                    <textarea  rows="4"  asp-for="Transfer.Description" class="form-control"></textarea>
+                                                    <span asp-validation-for="Transfer.Description" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Transfer.AccountNo" class="control-label"></label>
+                <input asp-for="Transfer.AccountNo" class="form-control" />
+                <span asp-validation-for="Transfer.AccountNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transfer.Amount" class="control-label"></label>
+                <input asp-for="Transfer.Amount" class="form-control" />
+                <span asp-validation-for="Transfer.Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Transfer.Description" class="control-label"></label>
+                <input asp-for="Transfer.Description" class="form-control" />
+                <span asp-validation-for="Transfer.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transfer.Bank" class="control-label"></label>
+                <input asp-for="Transfer.Bank" class="form-control" />
+                <span asp-validation-for="Transfer.Bank" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

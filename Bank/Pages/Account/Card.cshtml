@@ -1,0 +1,139 @@
+﻿@page
+@model Bank.Pages.Account.CardModel
+@{
+}
+
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Transection Log</h3>
+                    </div>
+                    <ul>
+                        <li class="home-bread">Dashboard</li>
+                        <li>My Card</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+<div class="dsahboard-area bg-color area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard-head">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-profile">
+                                    <div class="profile-content">
+                                        <img src="~/img/about/profile.png" alt="">
+                                        <span class="pro-name">
+                                            @Html.DisplayFor(model => model.MyUser.FirstName)  @Html.DisplayFor(model => model.MyUser.LastName)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        <i class="flaticon-028-money"></i>
+                                        <span class="pro-name">Account Status:  @Html.DisplayFor(model => model.Profile.Status)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+
+                                        <i class="flaticon-043-bank-2"></i>
+                                        <span class="pro-name">Account number :  @Html.DisplayFor(model => model.Profile.AccountNo)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+
+                                        <i class="flaticon-050-credit-card-2"></i>
+                                        <span class="pro-name">Balance:  @Html.DisplayFor(model => model.Profile.Balance)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <aside class="sidebar">
+                    <div class="dashboard-side">
+                        <ul>
+                            <li class="active"><a a asp-area="" asp-page="/Account/Dashboard"><i class="ti-dashboard"></i>Dashboard</a></li>
+                            <li><a asp-area="" asp-page="/Account/Transact"><i class="ti-new-window"></i>Send Money</a></li>
+                            <li><a asp-area="" asp-page="/Account/MyProfile"><i class="ti-credit-card"></i>Profile</a></li>
+                            <li><a asp-area="" asp-page="/Account/Card"><i class="ti-credit-card"></i>Card Number</a></li>
+                            <li><a asp-area="" asp-page="/Account/Transactions-Log"><i class="ti-layout-list-thumb"></i>Transaction Log</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="dashboard-support">
+                        <div class="support-inner">
+                            <div class="help-support">
+                                <i class="flaticon-107-speech-bubbles"></i>
+                                <a asp-page="/Contact"><span class="help-text">Need Help?</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="send-money-form add-bank-form">
+                                <div class="form-text">
+                                    <h4 class="form-top">My Card Details</h4>
+                                    <div class="form-inner">
+                                        <form >
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="m-text">Card Number</label>
+                                                    <h4> @Html.DisplayFor(model => model.Profile.CardNo)</h4>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="currencyfrr">CVV</label>
+                                                    <h4>@Html.DisplayFor(model => model.Profile.CVV)</h4>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="currencyfrr">Full Name</label>
+                                                    <h4> @Html.DisplayFor(model => model.MyUser.FirstName)  @Html.DisplayFor(model => model.MyUser.LastName)</h4>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label for="currencyfrr">Card Expires</label>
+                                                    <h4> @Html.DisplayFor(model => model.Profile.CardExpireDate) </h4>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

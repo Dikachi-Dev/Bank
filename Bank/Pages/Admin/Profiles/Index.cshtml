@@ -1,0 +1,102 @@
+﻿@page
+@model Bank.Pages.Admin.Profiles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Start breadcrumbs area -->
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Profiles </h3>
+                        <h5><a asp-page="Create">Create New</a></h5>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].AccountNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].CardNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].CVV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].CardExpireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Profile[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Profile)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CVV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardExpireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

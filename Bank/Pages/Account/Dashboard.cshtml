@@ -1,0 +1,223 @@
+﻿@page
+@model Bank.Pages.Account.DashboardModel
+@{
+}
+
+@*<h2>Welcome</h2>
+<h4> @Html.DisplayFor(model => model.MyUser.LastName)</h4>
+<h6> @Html.DisplayFor(model => model.MyUser.FirstName)</h6>
+<h6> @Html.DisplayFor(model => model.Profile.Balance)</h6>*@
+
+
+
+
+
+<!-- Start breadcrumbs area -->
+<style>
+    .suspend {
+        background-color: red;
+        height: max-content;
+        text-align: center;
+        /* margin-bottom: 0px; */
+        /* padding-bottom: 0px; */
+    }
+    .area-paddg {
+        padding: 0px 0px 10px 0px;
+    }
+</style>
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Welcome,</h3>
+                    </div>
+                    <h4> @Html.DisplayFor(model => model.MyUser.FirstName)  @Html.DisplayFor(model => model.MyUser.LastName)</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-color area-paddg">
+    @if (Model.Profile.Status == "Suspended")
+    {
+        <div class="suspend">
+            <h3>Your account is suspended </h3>
+            <h5>You can no longer perform any transaction</h5>
+            <h6>Contact Customer Care on Live chat or Send us a mail on <a asp-page="/Contact">Contact Page</a></h6>
+        </div>
+    }
+    else
+    {
+
+    }
+</div>
+
+
+<!-- End breadcrumbs area -->
+<div class="dsahboard-area bg-color area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard-head">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-profile">
+                                    <div class="profile-content">
+                                        <img src="~/img/about/profile.png" alt="">
+                                        <span class="pro-name">
+                                            @Html.DisplayFor(model => model.MyUser.FirstName)  @Html.DisplayFor(model => model.MyUser.LastName)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        <i class="flaticon-028-money"></i>
+                                        <span class="pro-name">Account Status:  @Html.DisplayFor(model => model.Profile.Status)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        @*<a class="edit-icon" href="a-add-bank.html"><i class="ti-pencil-alt"></i></a>*@
+                                        <i class="flaticon-043-bank-2"></i>
+                                        <span class="pro-name">Account number :  @Html.DisplayFor(model => model.Profile.AccountNo)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        
+                                        <i class="flaticon-050-credit-card-2"></i>
+                                        <span class="pro-name">Balance:  @Html.DisplayFor(model => model.Profile.Balance)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <aside class="sidebar">
+                    <div class="dashboard-side">
+                        <ul>
+                            <li class="active"><a a asp-area="" asp-page="/Account/Dashboard"><i class="ti-dashboard"></i>Dashboard</a></li>
+                            <li>
+                                @if (Model.Profile.Status == "Active")
+                                {
+                                    <a asp-area="" asp-page="/Account/Transact"><i class="ti-new-window"></i>Send Money</a>
+                                }
+                                else
+                                {
+                                    <a asp-area="" asp-page="#" class="disabled"><i class="ti-new-window"></i>Send Money</a>
+                                }
+
+                            </li>
+                            <li><a asp-area="" asp-page="/Account/MyProfile"><i class="ti-credit-card"></i>Profile</a></li>
+                            <li><a asp-area="" asp-page="/Account/Card"><i class="ti-credit-card"></i>Card Number</a></li>
+                            <li><a asp-area="" asp-page="/Account/Transactions-Log"><i class="ti-layout-list-thumb"></i>Transaction Log</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="dashboard-support">
+                        <div class="support-inner">
+                            <div class="help-support">
+                                <i class="flaticon-107-speech-bubbles"></i>
+                                <a asp-page="/Contact"><span class="help-text">Need Help?</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-curency">
+                                <div class="curency-text">
+                                    <span class="c-country">Account Type</span>
+                                    <span class="c-money"> @Html.DisplayFor(model => model.MyUser.AccountType)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-curency">
+                                <div class="curency-text">
+                                    <span class="c-country">Country</span>
+                                    <span class="c-money"> @Html.DisplayFor(model => model.MyUser.Country)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-curency">
+                                <div class="curency-text">
+                                    <span class="c-country">Created On</span>
+                                    <span class="c-money"> @Html.DisplayFor(model => model.MyUser.Created)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="send-money-form transection-log">
+                                <div class="form-text">
+                                    <h4 class="form-top">Transection Log</h4>
+                                    <div class="form-inner table-inner">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Reciever</th>
+                                                    <th>Status</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var transfer in Model.Transfer)
+                                                {
+                                                    <tr>
+                                                        <td>@transfer.TxnDate</td>
+                                                        <td>@transfer.AccountNo</td>
+                                                        <td>@transfer.Status</td>
+                                                        <td>@transfer.Amount</td>
+                                                    </tr>
+
+                                                }
+                                            </tbody>
+                                            
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

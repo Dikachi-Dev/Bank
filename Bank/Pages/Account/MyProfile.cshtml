@@ -1,0 +1,167 @@
+﻿@page
+@model Bank.Pages.Account.MyProfileModel
+@{
+}
+
+<!-- Start breadcrumbs area -->
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Transection Log</h3>
+                    </div>
+                    <ul>
+                        <li class="home-bread">Dashboard</li>
+                        <li>My Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+<div class="dsahboard-area bg-color area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard-head">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-profile">
+                                    <div class="profile-content">
+                                        <img src="~/img/about/profile.png" alt="">
+                                        <span class="pro-name">
+                                            @Html.DisplayFor(model => model.MyUser.FirstName)  @Html.DisplayFor(model => model.MyUser.LastName)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+                                        <i class="flaticon-028-money"></i>
+                                        <span class="pro-name">Account Status:  @Html.DisplayFor(model => model.Profile.Status)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+
+                                        <i class="flaticon-043-bank-2"></i>
+                                        <span class="pro-name">Account number :  @Html.DisplayFor(model => model.Profile.AccountNo)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-dash-head">
+                                <div class="dashboard-amount">
+                                    <div class="amount-content">
+
+                                        <i class="flaticon-050-credit-card-2"></i>
+                                        <span class="pro-name">Balance:  @Html.DisplayFor(model => model.Profile.Balance)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <aside class="sidebar">
+                    <div class="dashboard-side">
+                        <ul>
+                            <li class="active"><a a asp-area="" asp-page="/Account/Dashboard"><i class="ti-dashboard"></i>Dashboard</a></li>
+                            <li>
+                                @if (Model.Profile.Status == "Active")
+                                {
+                                    <a asp-area="" asp-page="/Account/Transact"><i class="ti-new-window"></i>Send Money</a>
+                                }
+                                else
+                                {
+                                    <a asp-area="" asp-page="#" class="disabled"><i class="ti-new-window"></i>Send Money</a>
+                                }
+
+                            </li>
+                            <li><a asp-area="" asp-page="/Account/MyProfile"><i class="ti-credit-card"></i>Profile</a></li>
+                            <li><a asp-area="" asp-page="/Account/Card"><i class="ti-credit-card"></i>Card Number</a></li>
+                            <li><a asp-area="" asp-page="/Account/Transactions-Log"><i class="ti-layout-list-thumb"></i>Transaction Log</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="dashboard-support">
+                        <div class="support-inner">
+                            <div class="help-support">
+                                <i class="flaticon-107-speech-bubbles"></i>
+                                <a asp-page="/Contact"><span class="help-text">Need Help?</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="send-money-form transection-log">
+                                <div class="form-text">
+                                    <h4 class="form-top">Transection Log</h4>
+                                    <div class="form-inner table-inner">
+                                        <div class="card ">
+                                            <div class="card-header">
+                                                <h4 class="card-title"> Profile Details</h4>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <h6><b>Account Name </b> </h6>
+                                                <p> @Html.DisplayFor(model => model.MyUser.FirstName)   @Html.DisplayFor(model => model.MyUser.LastName)</p>
+                                                <hr />
+                                                <h6><b>Username</b> </h6>
+                                                <p> @Html.DisplayFor(model => model.MyUser.UserName)</p>
+                                                <hr />
+                                                <h6><b>Gender</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.Gender)</b></p>
+                                                <hr />
+                                                <h6><b>Country</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.Country)</b></p>
+                                                <hr />
+                                                <h6><b>State</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.State)</b></p>
+                                                <hr />
+                                                <h6><b>Address</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.Address)</b></p>
+                                                <hr />
+                                                <h6><b>PhoneNumber</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.PhoneNumber)</b></p>
+                                                <hr />
+                                                <h6><b>Occupation</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.Occupation)</b></p>
+                                                <hr />
+                                                <h6><b>Status</b></h6>
+                                                <p><b> @Html.DisplayFor(model => model.MyUser.MarriageStatus)</b></p>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <a class="btn btn-primary" asp-area="" asp-page="/Account/ChangePassword">Change Password</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@page
+@model Bank.Pages.Admin.Transactions.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<!-- Start breadcrumbs area -->
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Delete </h3>
+                        <h3>Are you sure you want to delete this?</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+
+
+<div>
+    <h4>Transfer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.AccountNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.AccountNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.MAccountNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.MAccountNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.Amount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.TxnDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.TxnDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Transfer.Bank)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transfer.Bank)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Transfer.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

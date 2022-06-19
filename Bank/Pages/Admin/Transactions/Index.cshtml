@@ -1,0 +1,85 @@
+﻿@page
+@model Bank.Pages.Admin.Transactions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!-- Start breadcrumbs area -->
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>Transactions </h3>
+                        <h5><a asp-page="Create">Create New</a></h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].AccountNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].MAccountNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].TxnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transfer[0].Bank)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Transfer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MAccountNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TxnDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bank)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

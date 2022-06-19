@@ -1,0 +1,38 @@
+﻿@page
+@model Bank.Pages.Account.LogoutModel
+@{
+}
+<!-- Start breadcrumbs area -->
+<div class="page-area">
+    <div class="breadcumb-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb text-center">
+                    <div class="section-headline white-headline text-center">
+                        <h3>LogOut</h3>
+                    </div>
+
+                    <form method="post">
+                        <div class="container mt-5">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-12 col-lg-4 col-md-12">
+                                    <h4>Are You Sure You Want To Logout?</h4>
+
+                                    <p>
+                                        <button class="btn btn-primary" asp-page-handler="Logout">Yes</button>
+                                        <button class="btn btn-light ml-5 border-dark" asp-page-handler="DontLogout">No</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End breadcrumbs area -->
+
