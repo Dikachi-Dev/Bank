@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Bank.Models;
 using System.Net;
 using System.Net.Mail;
+using System.IO;
 
 namespace Bank.Pages.Admin.Transactions
 {
@@ -38,7 +39,7 @@ namespace Bank.Pages.Admin.Transactions
 
             context.Transfers.Add(Transfer);
             var reciever = context.Profiles.FirstOrDefault(m => m.AccountNo == Transfer.AccountNo);
-            if (Transfer.Bank == "Bank")
+            if (Transfer.Bank == "PGC")
             {
                 if (Transfer.Type == "Debit")
                 {
@@ -52,16 +53,27 @@ namespace Bank.Pages.Admin.Transactions
            
             var Message2 = "You just Recieved a total sum of  "  + Transfer.Amount + ".00 " + "From " + Transfer.MAccountNo + "\n ";         
             string Email2 = reciever.Email;
-            var credentials = new NetworkCredential("customer-support@pgcbankplc.com", "Money2018$");
+
+            //addd tremplate
+
+            StreamReader bd = new StreamReader(@"C:\Projects\NewBank\Bank\Pages\mailbody.html");
+
+            //sender  body
+            string Mailtext1 = bd.ReadToEnd();
+            Mailtext1 = Mailtext1.Replace("{name}", Email2);
+            Mailtext1 = Mailtext1.Replace("{message}", Message2);
+            Mailtext1 = Mailtext1.Replace("{subject}", "Transaction Update");
+
+            var credentials = new NetworkCredential("customer-support@bankplc.com", "Money2018$");
             var mail2 = new MailMessage();
             var client = new SmtpClient();
 
             //mail to reciever 
             mail2 = new MailMessage()
             {
-                From = new MailAddress("customer-support@pgcbankplc.com", "Providence global corporation Bank"),
-                Subject = "Notification from The Bank",
-                Body = Message2
+                From = new MailAddress("customer-support@bankplc.com", "Your bank Name"),
+                Subject = "Notification from The PGD Bank",
+                Body = Mailtext1
             };
             mail2.IsBodyHtml = true;
             mail2.To.Add(new MailAddress(Email2));
@@ -70,17 +82,24 @@ namespace Bank.Pages.Admin.Transactions
             //smtp config
             client = new SmtpClient()
             {
-                Port = 25,
+                Port = 8889,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Host = "mail.pgcbankplc.com",
+                Host = "mail5013.site4now.net",
                 EnableSsl = false,
                 Credentials = credentials
             };
 
 
+            try
+            {
 
             client.Send(mail2); // Send the mail
+            }
+            catch(Exception e)
+            {
+                Console.Write(e.Message);
+            }
 
 
             await context.SaveChangesAsync();

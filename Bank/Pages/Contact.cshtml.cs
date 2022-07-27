@@ -31,7 +31,7 @@ namespace Bank.Pages
 
                 string message = "Mail From : " + "  " + Input.Name + "\n " + "Sender Email : " + "  " + Input.Email + "\n " + " Message : " + Input.Message;
                 // Credentials
-                var credentials = new NetworkCredential("customer-support@pgcbankplc.com", "Money2018$");
+                var credentials = new NetworkCredential("customer-support@bankplc.com", "Money2018$");
 
 
                 //string FilePath = "C:\\Users\\YunAir\\source\\repos\\UnitedCreditUnionBank\\mailtemp.html";
@@ -50,21 +50,21 @@ namespace Bank.Pages
                 // Mail message
                 var mail = new MailMessage()
                 {
-                    From = new MailAddress("customer-support@pgcbankplc.com.com"),
+                    From = new MailAddress("customer-support@bankplc.com"),
                     Subject = Input.Subject,
                     Body = message
                 };
 
                 mail.IsBodyHtml = false;
-                mail.To.Add(new MailAddress("customer-support@pgcbankplc.com.com"));
+                mail.To.Add(new MailAddress("customer-support@bankplc.com"));
 
                 // Smtp client
                 var client = new SmtpClient()
                 {
-                    Port = 25,
+                    Port = 8889,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Host = "mail.pgcbankplc.com",
+                    Host = "mail5013.site4now.net",
                     EnableSsl = false,
                     Credentials = credentials
                 };

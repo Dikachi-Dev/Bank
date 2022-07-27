@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -142,35 +143,88 @@ namespace Bank.Pages
                     }
 
 
+                    try
+                    {
+                        StreamReader bd = new(@"~\NewBank\Bank\Pages\mailbody.html");
+                        var credentials = new NetworkCredential("test@test.com", "Money2018$");
+                        var mail1 = new MailMessage();
+                        //var mail2 = new MailMessage();
+                        var client = new SmtpClient();
+                        string Email = user.Email;
+                        string Message = "Thank you for Signing Up." + "</br>"  + " Your Account is Under Review, Please Contact Customer Service on customer-support@bankplc.com for more information";
+                        string name = user.FirstName;
+                        // sed Mail
+                        //sender  body
+                        string Mailtext1 = bd.ReadToEnd();
+                        Mailtext1 = Mailtext1.Replace("{name}", name);
+                        Mailtext1 = Mailtext1.Replace("{message}", Message);
+                        Mailtext1 = Mailtext1.Replace("{subject}", "Signup Notification from The bank Plc");
+                        //mail to sender 
+                        mail1 = new MailMessage()
+                        {
+                            From = new MailAddress("customer-support@bankplc.com", "Your bank Name"),
+                            Subject = "Signup Notification from The bank Plc",
+                            Body = Mailtext1
+                        };
+                        mail1.IsBodyHtml = true;
+                        mail1.To.Add(new MailAddress(Email));
+                        //smtp config
+                        client = new SmtpClient()
+                        {
+                            Port = 8889,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Host = "mail5013.site4now.net",
+                            EnableSsl = false,
+                            Credentials = credentials,
+                            Timeout = 100
+                        };
+                        client.Send(mail1);                    
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Write(e);
+                    }
                     // sed Mail
-                    string Message = "Thank you for Signing Up " + user.FirstName + "\n " + "Your Account is Under Review, Please Contact Customer Service on customer-support@pgcbankplc.com for assistance";
-                    string Email = user.Email;
-                    // Credentials
-                    var credentials = new NetworkCredential("customer-support@pgcbankplc.com", "Money2018$");
+                    //string Message = "Thank you for Signing Up."  + "\n " +  " Your Account is Under Review, Please Contact Customer Service on customer-support@bankplc.com for more information";
+                    //string subject = "Signup Notification from The bank Plc";
+                    //string Email = user.Email;
+                    //string name = user.FirstName;
+
+                    //StreamReader bd = new (@"C:\Projects\NewBank\Bank\Pages\mailbody.html");
+
+                    //string Mailtext = bd.ReadToEnd();
+                    //Mailtext = Mailtext.Replace("{name}", name);
+                    //Mailtext = Mailtext.Replace("{message}", Message);
+                    //Mailtext = Mailtext.Replace("{subject}", subject);
+
+                    //// Credentials
+                    //var credentials = new NetworkCredential("customer-support@bankplc.com", "Money2018$");
 
                     // Mail message
-                    var mail = new MailMessage()
-                    {
-                        From = new MailAddress("customer-support@pgcbankplc.com", " Providence global corporation Bank"),
-                        Subject = "Notification from The Bank",
-                        Body = Message
-                    };
+                    //var mail = new MailMessage()
+                    //{
+                    //    From = new MailAddress("customer-support@bankplc.com", " Your bank Name"),
+                    //    Subject = subject,
+                    //    Body = Mailtext
+                    //};
 
-                    mail.IsBodyHtml = true;
-                    mail.To.Add(new MailAddress(Email));
+                    //mail.IsBodyHtml = true;
+                    //mail.To.Add(new MailAddress(Email));
 
                     // Smtp client
-                    var client = new SmtpClient()
-                    {
-                        Port = 25,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Host = "mail.pgcbankplc.com",
-                        EnableSsl = false,
-                        Credentials = credentials
-                    };
+                    //var client = new SmtpClient()
+                    //{
+                    //    Port = 8889,
+                    //    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    //    UseDefaultCredentials = false,
+                    //    Host = "mail5013.site4now.net",
+                    //    EnableSsl = false,
+                    //    Credentials = credentials,
+                    //    Timeout=100
+                    //};
 
-                    client.Send(mail); // Send the mail
+                    //client.Send(mail); // Send the mail
 
                     //await signInManager.SignInAsync(user, false);
                     return RedirectToPage("Login");

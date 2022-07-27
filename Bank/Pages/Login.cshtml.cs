@@ -67,7 +67,7 @@ namespace Bank.Pages
 
 
                 }
-                ModelState.AddModelError("", "Username or Password ois incorrect");
+                ModelState.AddModelError("", "Username or Password is incorrect");
             }
             return Page();
         }

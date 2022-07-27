@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Pages
 {
-    [Authorize]
+    
     public class PrivacyModel : PageModel
     {
         

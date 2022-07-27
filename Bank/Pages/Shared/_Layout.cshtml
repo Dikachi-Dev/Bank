@@ -45,6 +45,14 @@
     </head>
     <body>
 
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+            }
+        </script>
+
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
         <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -59,25 +67,15 @@
                         <div class=" col-md-6 col-sm-6 col-xs-12">
                             <div class="topbar-left">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-envelope"></i> info@bultifor.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>customer-support@bankplc.com</a></li>
                                     <li><a href="#"><i class="fa fa-clock-o"></i> Live support</a></li>
                                 </ul>
                             </div>
                         </div>
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="topbar-right">
-                                <ul>
-                                    <li>
-                                        <a href="#"><img src="img/icon/w1.png" alt="">ENG</a>
-                                        <ul>
-                                            <li><a href="#"><img src="img/icon/w2.png" alt="">DEU</a>
-                                            <li><a href="#"><img src="img/icon/w3.png" alt="">ESP</a>
-                                            <li><a href="#"><img src="img/icon/w4.png" alt="">FRA</a>
-                                            <li><a href="#"><img src="img/icon/w5.png" alt="">KSA</a>
-                                        </ul>
-                                    </li>
-                                    @*<li><a href="login.html"><img src="img/icon/login.png" alt="">Login</a>*@
-                                </ul>
+                                <div id="google_translate_element"></div>
                             </div>
                         </div>
                     </div>
@@ -141,12 +139,6 @@
 
                                                     @if (SigninManager.IsSignedIn(User))
                                                     {
-
-
-
-
-
-
                                                         @if (User.IsInRole("Admin"))
                                                         {
                                                             <li>
@@ -158,9 +150,7 @@
                                                             <li class="nav-item">
                                                                 <a class="btn btn-primary" asp-area="" asp-page="/Admin/Transactions/Index">Transfer</a>
                                                             </li>
-                                                            @*<li>
-                    <a class="nav-link text-dark" asp-area="" asp-page="">Admin</a>
-                </li>*@
+
 
                                                         }
                                                         else
@@ -215,7 +205,7 @@
                                                 <li><a asp-page="/Reviews">Reviews</a></li>
                                                 <li><a asp-page="/Privacy">Terms & Conditions</a></li>
                                             </ul>
-                                        </li>                                       
+                                        </li>
 
                                         <li><a asp-page="/Contact">contacts</a></li>
 
@@ -292,7 +282,7 @@
                                         <a class="footer-black-logo" href="#"><img src="img/logo/logo2.png" alt=""></a>
                                     </div>
                                     <p>
-                                        Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create. Replacing a  maintains the amount of lines.
+                                        The safest and most secured means of sending and recieving money.
                                     </p>
                                     <div class="subs-feilds">
                                         <div class="suscribe-input">
@@ -310,11 +300,11 @@
                                 <div class="footer-head">
                                     <h4>Products</h4>
                                     <ul class="footer-list">
-                                        <li><a href="#">Bank Card</a></li>
-                                        <li><a href="#">Deposit Skim</a></li>
-                                        <li><a href="#">Affiliate</a></li>
-                                        <li><a href="#">Software</a></li>
-                                        <li><a href="#">Branding </a></li>
+                                        <li><a asp-area="" asp-page="/Login">Bank Card</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Deposit Skim</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Affiliate</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Software</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Branding </a></li>
                                         <li><a href="#">Promotion </a></li>
                                     </ul>
                                 </div>
@@ -327,12 +317,12 @@
                                 <div class="footer-head">
                                     <h4>Payments</h4>
                                     <ul class="footer-list">
-                                        <li><a href="#">Send Mony</a></li>
-                                        <li><a href="#">Receive Money </a></li>
-                                        <li><a href="#">Shopping</a></li>
-                                        <li><a href="#">Online payment</a></li>
-                                        <li><a href="#">pay a Friend </a></li>
-                                        <li><a href="#">pay a bill </a></li>
+                                        <li><a asp-area="" asp-page="/Login">Send Mony</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Receive Money </a></li>
+                                        <li><a asp-area="" asp-page="/Login">Shopping</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Online payment</a></li>
+                                        <li><a asp-area="" asp-page="/Login">pay a Friend </a></li>
+                                        <li><a asp-area="" asp-page="/Login">pay a bill </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -344,12 +334,12 @@
                                 <div class="footer-head">
                                     <h4>Company</h4>
                                     <ul class="footer-list">
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Services </a></li>
-                                        <li><a href="#">Events</a></li>
-                                        <li><a href="#">Promotion</a></li>
-                                        <li><a href="#">Transition</a></li>
-                                        <li><a href="#">Social Media</a></li>
+                                        <li><a asp-area="" asp-page="/About">About us</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Services </a></li>
+                                        <li><a asp-area="" asp-page="/FAQ">FAQ</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Promotion</a></li>
+                                        <li><a asp-area="" asp-page="/Login">Transition</a></li>
+                                        <li><a asp-area="" asp-page="/Contact">Social Media</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -361,12 +351,12 @@
                                 <div class="footer-head">
                                     <h4>Support</h4>
                                     <ul class="footer-list">
-                                        <li><a href="#">Customer Care</a></li>
+                                        <li><a asp-area="" asp-page="/Contact">Customer Care</a></li>
                                         <li><a href="#">Live chat</a></li>
                                         <li><a href="#">Notification</a></li>
                                         <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>
                                         <li><a href="#">Terms & Condition</a></li>
-                                        <li><a href="#">Contact us </a></li>
+                                        <li><a asp-area="" asp-page="/Contact">Contact us </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -382,8 +372,8 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="copyright">
                                 <p>
-                                    Copyright © 2020
-                                    <a href="#">Bank</a> All Rights Reserved
+                                    Copyright © 2022
+                                    <a asp-page="/Index">PGC Bank Plc</a> All Rights Reserved
                                 </p>
                             </div>
                         </div>
@@ -426,6 +416,20 @@
         @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>*@
+
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            (function () {
+                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/62b2c123b0d10b6f3e78b3c2/1g6544t82';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
 
         @await RenderSectionAsync("Scripts", required: false)
     </body>

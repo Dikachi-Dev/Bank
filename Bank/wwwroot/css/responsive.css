@@ -349,7 +349,7 @@
 }
 .dashboard-content .currency-exchange .form-inner,
 .form-inner {
-    padding: 30px 20px;
+    padding: 30px 5px;
 }    
 .table-inner td, .table-inner th{
     font-size: 14px;
@@ -632,7 +632,7 @@ blockquote::before {
 /* Dashboard Responsive */
 .dashboard-content .currency-exchange .form-inner,
 .form-inner {
-    padding: 30px 20px;
+    padding: 30px 5px;
 } 
 .table-inner {
     max-width: 100%;
